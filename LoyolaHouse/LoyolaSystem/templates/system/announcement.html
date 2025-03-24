@@ -1,0 +1,35 @@
+{% extends "dashboard.html" %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+
+        <label for="email_level">Email Level:</label>
+        <select name="email_level" id="email_level">
+            {% for level in email_levels %}
+                <option value="{{ level.level_id }}">{{ level.level_desc }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="email_type">Email Type:</label>
+        <select name="email_type" id="email_type">
+            {% for type in email_types %}
+                <option value="{{ type.type_id }}">{{ type.type_desc }}</option>
+            {% endfor %}
+        </select>
+
+        <div>
+            <label for='emailSubject'>Subject:</label>
+            <input style='width: 500px;' type='text' id='emailSubject' name='emailSubject' placeholder='Subject' required/>
+        </div>
+
+        <div>
+            <label for="emailContent">Content:</label>
+            <input id="emailContent" type="hidden" name="emailContent">
+            <trix-editor input="emailContent" style="width: 600px; height: 500px"></trix-editor>
+        </div>
+
+        <div  class='text-center mt-3'>
+            <button type="submit" class="btn btn-view-priest-profiles">Save</button>
+        </div>
+    </form>
+{% endblock content %}
