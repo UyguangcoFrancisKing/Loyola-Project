@@ -5,6 +5,7 @@ from django.views.decorators.cache import never_cache
 from .models import EmailLevel, EmailType, Announcement
 from django.utils.html import strip_tags
 from django.utils.safestring import mark_safe
+from django.contrib.auth.models import User
 
 # Create your views here.
 @never_cache
@@ -48,10 +49,12 @@ def create_announcement(request):
 
     email_levels = EmailLevel.objects.all()
     email_types = EmailType.objects.all()
-
+    users = User.objects.all()
+    
     return render(request, 'system/announcement.html', {
         'email_levels': email_levels,
-        'email_types': email_types
+        'email_types': email_types,
+        'users': users,
     })
 
 

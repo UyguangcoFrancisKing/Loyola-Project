@@ -1,5 +1,6 @@
 {% extends "dashboard.html" %}
 {% block content %}
+<div class="container mt-4">
     <form method="POST">
         {% csrf_token %}
 
@@ -32,4 +33,20 @@
             <button type="submit" class="btn btn-view-priest-profiles">Save</button>
         </div>
     </form>
+</div>
+<div class="container mt-4">
+    <div>
+        <label>Select Recipients:</label>
+        <div class="mb-3" style="max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;">
+            {% for user in users %}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="recipients" value="{{ user.contact_number }}" id="user{{ user.id }}">
+                    <label class="form-check-label" for="user{{ user.id }}">
+                        {{ user.full_name }} - {{ user.contact_number }}
+                    </label>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock content %}
