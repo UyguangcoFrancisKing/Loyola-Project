@@ -1,0 +1,21 @@
+{% extends "dashboard.html" %}
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-{{ message.tags }} text-center">{{ message }}</div>
+{% endfor %}
+{% endif %}
+<div class="container mt-4">
+    <h2>Add Viber Contact</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group mb-3">
+            <label for="contact">Viber</label>
+            <input type="tel" class="form-control" name="contact" id="contact" required 
+                maxlength="11" minlength="11" value="09" pattern="[0-9]{11}"
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Viber</button>
+    </form>
+</div>
+{% endblock %}

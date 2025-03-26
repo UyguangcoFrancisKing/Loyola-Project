@@ -2,7 +2,7 @@
 {% block title %} User Log-in Page {% endblock %}
 
 {% block form %} 
-  <form action='/users/login' method='POST'>
+  <form action="{% url 'users:login' %}" method='POST'>
     {% csrf_token %}
       <div class="form-outline mb-4">
         <label class="form-label" for="username">Username</label>

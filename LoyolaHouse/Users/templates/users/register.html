@@ -1,0 +1,57 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+<div>
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} text-center">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    <form action="{% url 'users:newAccount' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-outline mb-4">
+            <label class="form-label" for="role">User Role</label>
+            <select name="role" id="role">
+                {% for role in roles %}
+                    <option value="{{ role.role_id }}">{{ role.role_desc }}</option>
+                {% endfor %}
+            </select>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email Address" required/>
+          </div>
+    
+          <div class="form-outline mb-4">
+            <label class="form-label" for="FName">First Name</label>
+            <input type="text" id="FName" name="FName" class="form-control" required/>
+          </div>
+        
+          <div class="form-outline mb-4">
+            <label class="form-label" for="LName">Last Name</label>
+            <input type="text" id="LName" name="LName" class="form-control" required/>
+          </div>
+    
+          <div class="form-outline mb-4">
+            <label class="form-label" for="contact">Contact Number</label>
+            <input type="tel" class="form-control" name="contact" id="contact" required 
+                maxlength="11" minlength="11" value="09" pattern="[0-9]{11}"
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+          </div>
+    
+          <div class="form-outline mb-4">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" id="password" name="password" class="form-control" required/>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="password1">Confirm Password</label>
+            <input type="password" id="password1" name="password1" class="form-control" required/>
+          </div>
+
+          <div class="text-center pt-1 mb-3 pb-1">
+            <button class="btn btn-custom btn-block fa-lg mb-2" type="submit">Register</button>
+          </div>
+    </form>
+</div>
+{% endblock %}
