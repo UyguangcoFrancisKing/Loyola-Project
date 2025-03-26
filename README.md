@@ -19,7 +19,7 @@
 ## to make account
 - py manage.py createsuperuser
 
-##mySQL:
+## mySQL:
 - create database LoyolaDB;
 - use LoyolaDB;
 
