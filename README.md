@@ -10,6 +10,7 @@
 - pip install mysqlclient
 
 ## for database:
+- edit username and password LoyolaHouse>settings.py>DATABASES
 - py manage.py makemigrations
 - py manage.py migrate
 
