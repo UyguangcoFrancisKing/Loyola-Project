@@ -3,9 +3,11 @@
 
 - python venv venv
 - venv/Scripts/activate
-
+  
 - pip install django
 - python.exe -m pip install -U pip
+- pip install django-ckeditor
+- python -m pip install requests
 
 - pip install mysqlclient
 
